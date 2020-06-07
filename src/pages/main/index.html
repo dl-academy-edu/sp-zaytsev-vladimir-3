@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+      <link href="common.css" rel="stylesheet"/>
+      <link href="style.css" rel="stylesheet"/>
+    </head>
+    <body>
+      @@include('header/index.html')
+      <main>
+        <section class="slider">
+          <h1 class="slider__title">Antonina Antoninovna</h1>
+          <p class="slider__text">Future front-end developer 23 years old, Tolyatti</p>
+          <div class="slider__wrapper">
+            <div class="slider__inner-wrapper">
+              <div class="slider__slide"></div>
+              <div class="slider__slide"></div>
+              <div class="slider__slide"></div>
+              <div class="slider__slide"></div>
+            </div>
+            <div class="slider__bottom-panel">
+              <button class="slider__button slider__button_back"></button>
+              <div class="slider__pagination"></div>
+              <button class="slider__button slider__button_next"></button>
+            </div>
+          </div>
+        </section>
+        <section class="about-me">
+          <h2 class="about-me__title">About me</h2>
+        </section>
+        <section class="skills">
+          <h2 class="skills__title">Skills</h2>
+          <p class="skills__text">I work in such programs as</p>
+        </section>
+        <section class="portfolio">
+
+        </section>
+        
+      </main>
+      @@include('footer/index.html')
+    </body>
+  </html>
