@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/static/fonts/gilroy.css" />
+    <link href="/common.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>My blog</title>
+  </head>
+  <body>
+    @@include('header/index.html')
+    <main>
+      <h1 class="container profile-title title">My profile</h1>
+      <section class="profile-info container">
+        <div class="profile-info__photo">
+        </div>
+        <div class="profile-info__text-block">
+          <ul class="profile-info__text-list list-hidden-marker">
+            <li class="profile-info__text-item">
+              <p class="profile-info__text"><span class="profile-info__text-black">Name:</span></p>
+            </li>
+            <li class="profile-info__text-item">
+              <p class="profile-info__text"><span class="profile-info__text-black">Surname:</span></p>
+            </li>
+            <li class="profile-info__text-item">
+              <p class="profile-info__text"><span class="profile-info__text-black">Email:</span></p>
+            </li>
+            <li class="profile-info__text-item">
+              <p class="profile-info__text"><span class="profile-info__text-black">Password:</span></p>
+            </li>
+            <li class="profile-info__text-item">
+              <p class="profile-info__text"><span class="profile-info__text-black">Location:</span></p>
+            </li>
+            <li class="profile-info__text-item">
+              <p class="profile-info__text"><span class="profile-info__text-black">Age:</span></p>
+            </li>
+          </ul>
+          <ul class="profile-info__buttons-list list-hidden-marker">
+            <li class="profile-info__button-item">
+              @@include('button/index.html', {
+                "class":"button_white",
+                "text":"Change password",
+                "type":"button"
+              })
+            </li>
+            <li class="profile-info__button-item">
+              @@include('button/index.html', {
+                "class":"button_white",
+                "text":"Change other data",
+                "type":"button"
+              })
+            </li>
+            <li class="profile-info__button-item">
+              @@include('button/index.html', {
+                "class":"button_white",
+                "text":"Delete account",
+                "type":"button"
+              })
+            </li>
+          </ul>
+        </div>          
+      </section>
+    </main>
+  </body>
+</html>

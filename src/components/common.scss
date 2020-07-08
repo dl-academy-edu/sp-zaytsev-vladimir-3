@@ -1,2 +1,62 @@
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 220px;
+  box-sizing: border-box;
+
+  @media (max-width:1023px) {
+    max-width: 768px;
+    padding: 0 60px;
+  }
+}
+
 @import "./header/header";
 @import "./footer/footer";
+@import "./button/button";
+@import "./buttonarrow/arrow";
+@import "./input/input";
+@import "./login/login";
+@import "./sign/sign";
+
+
+.list-hidden-marker {
+  list-style-type: none;
+  padding:0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 47px;
+  line-height: 57px;
+}
+
+body {
+  font-family: Gilroy, sans-serif;
+  color: #070707;
+}
+
+.fieldset-border-none {
+  border: none;
+  width: fit-content;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.opacity {
+  opacity: 0;
+}
+
+.invalid-feedback {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #EB3617;
+}

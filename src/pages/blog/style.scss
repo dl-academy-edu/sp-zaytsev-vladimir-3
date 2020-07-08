@@ -1,0 +1,235 @@
+.blog-title {
+  margin-top: 40px ;
+  margin-bottom: 40px;
+}
+
+.form-filter {
+  display: flex;
+  align-items: center;
+
+  &__legend {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &__options-list {
+    width: 100%;
+    padding: 0;
+    margin-right: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__option-item {
+    margin-bottom: 30px;
+  }
+
+  &__tags-list {
+    max-width: 125px;
+    padding: 0;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__tag-item {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+
+  &__views-list, &__comments-list, 
+  &__show-list, &__sort-list {
+    padding: 0;
+  }
+
+  &__views-item, &__comments-item, 
+  &__show-item, &__sort-item {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+  }  
+
+  &__checkbox-label {
+    position: relative;
+    margin-left: -20px;
+    width: 25px;
+    height: 25px;
+    background-image: url(/static/images/spritecircle.png);    
+    overflow: hidden;
+    background-repeat: no-repeat;
+    &_blue {
+      background-position: -5px -5px;
+      &::after {
+        background-position: -25px 0;
+      }      
+    }
+    &_light-blue {
+      background-position: -5px -40px;
+      &::after {
+        background-position: -50px 0;
+      }
+    }
+    &_yellow {      
+      background-position: -40px -75px;
+      &::after {
+        background-position: -50px -50px;
+      }
+    }
+    &_turquoise {
+      background-position: -5px -75px;
+      &::after {
+        background-position: -25px -50px;
+      }
+    }
+    &_orange {
+      background-position: -40px -40px;
+      &::after {
+        background-position: 0 0;
+      }
+    }
+    &_pink {
+      background-position: -75px -5px;
+      &::after {
+        background-position: -50px -25px;
+      }
+    }
+    &_purple {
+      background-position: -75px -40px;
+      &::after {
+        background-position: 0 -50px;
+      }
+    }
+    &_green {
+      background-position: -40px -5px;
+      &::after {
+        background-position: -25px -25px;
+      }
+    }
+    &_gray {
+      background-position: -75px -5px;
+      &::after {
+        background-position: 0 -25px;
+      }
+    }    
+  }
+
+  &__checkbox-input:checked + &__checkbox-label::after {
+      left: 0;
+      top: 0;
+      content: "";
+      position: absolute;
+      background-image: url(/static/images/spritevector.png);
+      width: 20px;
+      height: 20px;
+      background-repeat: no-repeat;
+      overflow: hidden;
+  }
+
+  &__comments-label{
+    display: flex;
+    align-items: center;
+    margin-left: -15px;
+    padding-left:30px;
+    position: relative;
+
+    &::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border: 2.5px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 5px;
+    }
+  }
+
+  &__comments-input:checked + &__comments-label::after {
+    position: absolute;
+    content: "";
+    background-image: url(/static/images/checkbox-active.svg);
+    width: 25px;
+    height: 25px;
+    left:0;
+  }
+
+  &__radio-label {
+    position: relative;
+    padding-left: 30px;
+    margin-left: -16px;
+  }
+
+  &__radio-label::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background-image: url(/static/images/radio.svg);
+    box-sizing: border-box;    
+  }
+
+  &__radio-input:checked + &__radio-label::after{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background-image: url(/static/images/radio-active.svg);
+    box-sizing: border-box;
+  }
+
+  &__button-list {
+    text-align: center;
+  }
+
+  &__button-item {
+    margin-bottom: 5px;
+  }
+
+  &__reset-button {
+    margin: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #E5E5E5;
+  }
+}
+
+.form-search {
+
+  &__list {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;  
+  }
+  &__item {
+    &_input {
+      width: 100%;
+      margin-right: 30px;
+    }
+  }
+
+}
+
+.blog-posts {
+  padding-top: 20px;
+  padding-bottom: 60px;
+
+  &__bottom-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

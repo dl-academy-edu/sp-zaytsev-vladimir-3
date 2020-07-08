@@ -1,0 +1,31 @@
+.button-arrow {
+  width: 42px;
+  height: 42px; 
+  background: transparent;
+  border: 0;    
+  cursor:pointer;
+  text-align: center;
+  padding: 0;
+
+  &:hover,focus {
+    opacity: .6;
+  }
+  
+  &:disabled {
+    cursor:url('static/images/cursor-disabled.png'), auto;
+    opacity: .1;
+  }
+
+  &_top{
+    transform: rotate(90deg);
+  }
+
+  &_left {
+    transform: initial;
+  }
+
+  &_right {
+    
+    transform: rotate(180deg);
+  }
+}

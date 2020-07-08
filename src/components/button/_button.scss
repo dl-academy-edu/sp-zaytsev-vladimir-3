@@ -1,0 +1,36 @@
+.button {
+  
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  
+
+  &_black {    
+    background-color: #070707;
+    color: #FFFFFF;
+    border: 2.5px solid #070707;
+    padding: 10px 29px;
+    cursor:pointer;
+    transition: 0.4s;
+
+    &:hover, focus {
+      background-color: #FFFFFF;
+      color: #070707;
+    }
+  }
+
+  &_white {
+    border: 2.5px solid #070707;    
+    background-color: #FFFFFF;
+    color: #070707;
+    padding: 10px 19px;
+    
+    transition: 0.4s;
+
+    &:hover, focus {
+      background-color: #070707;
+      color: #FFFFFF;
+    }    
+  }
+}

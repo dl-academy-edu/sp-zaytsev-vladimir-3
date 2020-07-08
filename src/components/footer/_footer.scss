@@ -1,0 +1,53 @@
+.footer {
+  display: flex;
+  padding: 60px 0;
+  flex-direction: column;
+  align-items: center;
+
+  &__text {
+    max-width: 269px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  &__social-list {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 348px;
+    width: 100%;
+    margin: 35px 0;
+  }
+
+  &__social-item {
+    margin: 5px;
+  }
+
+  &__dl-info {
+    font-size: 14px;
+    line-height: 16px;
+    color: #828282;
+    margin: 0;
+  }
+
+  &__dl-name {
+    border-bottom: 1px dashed #828282;
+    cursor: pointer;
+    transition: .4s;
+
+    &:hover, &:focus {
+      color: #070707;
+      border-bottom: 1px solid #070707;
+    }
+  }
+
+  &__code-info {
+    font-size: 14px;
+    line-height: 16px;
+    color: #828282;
+    margin: 5px 0 0 0;
+  }
+}

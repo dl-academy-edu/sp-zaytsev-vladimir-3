@@ -1,44 +1,194 @@
-<!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
-      <link href="common.css" rel="stylesheet"/>
-      <link href="style.css" rel="stylesheet"/>
-    </head>
-    <body>
-      @@include('header/index.html')
-      <main>
-        <section class="slider">
-          <h1 class="slider__title">Antonina Antoninovna</h1>
-          <p class="slider__text">Future front-end developer 23 years old, Tolyatti</p>
-          <div class="slider__wrapper">
-            <div class="slider__inner-wrapper">
-              <div class="slider__slide"></div>
-              <div class="slider__slide"></div>
-              <div class="slider__slide"></div>
-              <div class="slider__slide"></div>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/static/fonts/gilroy.css" />
+    <link href="/common.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>My blog</title>
+  </head>
+  <body>
+    @@include('header/index.html')
+    <main>
+      <section class="heading container">
+        <h1 class="heading__title title">Antonina Antoninovna</h1>
+        <p class="heading__text">Future front-end developer 23 years old, Tolyatti</p>
+      </section>
+      <section class="slider container">        
+        <div class="slider__wrapper slider__wrapper_js">
+          <div class="slider__inner-wrapper slider__inner-wrapper_js">
+            <div class="slider__slide slider__slide_js">
+              <picture>
+                <source srcset="static/images/slide-image-mobile.jpg 2x"
+                        media="(max-width: 767px)">
+                <source srcset="static/images/slide-image-tablet.jpg 2x"
+                        media="(max-width: 1023px)">
+                <source srcset="static/images/slide-image.jpg 2x"
+                        media="(min-width: 1024px)">                
+                <img class="slider__slide-image" src="static/images/slide-image.jpg" alt="slide image">
+              </picture>
             </div>
-            <div class="slider__bottom-panel">
-              <button class="slider__button slider__button_back"></button>
-              <div class="slider__pagination"></div>
-              <button class="slider__button slider__button_next"></button>
+            <div class="slider__slide slider__slide_js">
+              <picture>
+                <source srcset="static/images/slide-image-mobile.jpg 2x"
+                        media="(max-width: 767px)">
+                <source srcset="static/images/slide-image-tablet.jpg 2x"
+                        media="(max-width: 1023px)">
+                <source srcset="static/images/slide-image.jpg 2x"
+                        media="(min-width: 1024px)">
+                <img class="slider__slide-image" src="static/images/slide-image.jpg" alt="slide image">
+              </picture>              
+            </div>
+            <div class="slider__slide slider__slide_js">
+              <picture>
+                <source srcset="static/images/slide-image-mobile.jpg 2x"
+                        media="(max-width: 767px)">
+                <source srcset="static/images/slide-image-tablet.jpg 2x"
+                        media="(max-width: 1023px)">
+                <source srcset="static/images/slide-image.jpg 2x"
+                        media="(min-width: 1024px)">
+                <img class="slider__slide-image" src="static/images/slide-image.jpg" alt="slide image">
+              </picture>
+            </div>
+            <div class="slider__slide slider__slide_js">
+              <picture>
+                <source srcset="static/images/slide-image-mobile.jpg 2x"
+                        media="(max-width: 767px)">
+                <source srcset="static/images/slide-image-tablet.jpg 2x"
+                        media="(max-width: 1023px)">
+                <source srcset="static/images/slide-image.jpg 2x"
+                        media="(min-width: 1024px)">
+                <img class="slider__slide-image" src="static/images/slide-image.jpg" alt="slide image">
+              </picture>
             </div>
           </div>
-        </section>
-        <section class="about-me">
-          <h2 class="about-me__title">About me</h2>
-        </section>
-        <section class="skills">
-          <h2 class="skills__title">Skills</h2>
-          <p class="skills__text">I work in such programs as</p>
-        </section>
-        <section class="portfolio">
-
-        </section>
-        
-      </main>
-      @@include('footer/index.html')
-    </body>
-  </html>
+          <div class="slider__bottom-panel">
+            @@include('buttonarrow/index.html', {
+              "class":"slider__button slider__button_back slider__button_back_js"
+            })
+            <div class="slider__pagination slider__pagination_js"></div>
+            @@include('buttonarrow/index.html', {
+              "class":"button-arrow_right slider__button slider__button_next slider__button_next_js"
+            })
+          </div>
+        </div>
+      </section>
+      <section class="about-me">
+        <h2 class="about-me__title">About me</h2>
+        <div class="about-me__message-block">
+          <p class="about-me__message-text">Aliquam tortor molestie turpis est tristique. Congue diam orci amet quis semper ut. Vitae aenean nibh facilisis urna, ultricies euismod nunc. Commodo fringilla sit hendrerit consequat. Vel ac elit vel sagittis.</p>
+          <p class="about-me__message-text">Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam dictum ipsum nisl, sed pulvinar. Commodo elit sed a fermentum non justo. Etiam platea consectetur.</p>
+          <p class="about-me__message-text">Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis risus nec vitae nunc ultricies placerat. Nullam nec felis eu id dolor pellentesque tristique. </p>
+        </div>
+      </section>
+      <section class="skills container">
+        <h2 class="skills__title">Skills</h2>
+        <p class="skills__text">I work in such programs as</p>
+        <ul class="skills__programs-list list-hidden-marker">
+          <li class="skills__program-item">
+            <div class="skills__program-box">
+              <img class="skills__program-image" src="static/images/skills-image-1.jpg" alt="Program image 1">
+              <p class="skills__program-name">HTML 5</p>
+              <div class="skills__program-skill">
+                <span class="skills__program-raiting">85%</span>
+                <img class="skills__program-scale" src="static/images/skills-scale-1.jpg" alt="scale-1">
+              </div>
+            </div>
+          </li>
+          <li class="skills__program-item">
+            <div class="skills__program-box">
+              <img class="skills__program-image" src="static/images/skills-image-2.jpg" alt="Program image 2">
+              <p class="skills__program-name">CSS/SCSS</p>
+              <div class="skills__program-skill">
+                <span class="skills__program-raiting">55%</span>
+                <img class="skills__program-scale" src="static/images/skills-scale-2.jpg" alt="scale-2">
+              </div>
+            </div>
+          </li>            
+          <li class="skills__program-item">
+            <div class="skills__program-box">
+              <img class="skills__program-image" src="static/images/skills-image-3.jpg" alt="Program image 3">
+              <p class="skills__program-name">JavaScript</p>
+              <div class="skills__program-skill">
+                <span class="skills__program-raiting">5%</span>
+                <img class="skills__program-scale" src="static/images/skills-scale-3.jpg" alt="scale-3">
+              </div>              
+            </div>
+          </li>            
+          <li class="skills__program-item">
+            <div class="skills__program-box">
+              <img class="skills__program-image" src="static/images/skills-image-4.jpg" alt="Program image 4">
+              <p class="skills__program-name">Git/GitHub</p>
+              <div class="skills__program-skill">
+                <span class="skills__program-raiting">15%</span>
+                <img class="skills__program-scale" src="static/images/skills-scale-4.jpg" alt="scale-4">
+              </div>              
+            </div>
+          </li>
+          <li class="skills__program-item">
+            <div class="skills__program-box">
+              <img class="skills__program-image" src="static/images/skills-image-5.jpg" alt="Program image 5">
+              <p class="skills__program-name">Figma</p>
+              <div class="skills__program-skill">
+                <span class="skills__program-raiting">80%</span>
+                <img class="skills__program-scale" src="static/images/skills-scale-5.jpg" alt="scale-5">
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section class="portfolio">
+        <h2 class="portfolio__title">Portfolio</h2>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="static/images/portfolio-image-mobile.jpg"
+                        media="(max-width:767px)">
+                <source srcset="static/images/portfolio-image-tablet.jpg"
+                        media="(max-width:1023px)">
+                <source srcset="static/images/portfolio-image.jpg"
+                        media="(min-width:1024px)">
+                <img class="portfolio__image" src="static/images/portfolio-image.jpg" alt="portfolio image">
+              </picture>
+              <div class="portfolio__desc">
+                <a class="portfolio__link" href="#">Learning site for DL Academy courses</a>
+                <p class="portfolio__text">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. 
+                                          The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="static/images/portfolio-image-mobile.jpg"
+                        media="(max-width:767px)">
+                <source srcset="static/images/portfolio-image-tablet.jpg"
+                        media="(max-width:1023px)">
+                <source srcset="static/images/portfolio-image.jpg"
+                        media="(min-width:1024px)">
+                <img class="portfolio__image" src="static/images/portfolio-image.jpg" alt="pportfolio image">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="static/images/portfolio-image-mobile.jpg"
+                        media="(max-width:767px)">
+                <source srcset="static/images/portfolio-image-tablet.jpg"
+                        media="(max-width:1023px)">
+                <source srcset="static/images/portfolio-image.jpg"
+                        media="(min-width:1024px)">
+                <img class="portfolio__image" src="static/images/portfolio-image.jpg" alt="pportfolio image">
+              </picture>
+            </div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </section>        
+    </main>
+    @@include('footer/index.html')
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -2,15 +2,17 @@
   <header class="header">
     <nav class="header__nav">
       <ul class="header__nav-list list-hidden-marker">
-        <li class="header__nav-item">Home</li>
+        <li class="header__nav-item"><a class="header__nav-link" href="/index.html">Home</a></li>
         <li class="header__nav-item">
           <ul class="header__nav-list list-hidden-marker">
-            <li class="header__nav-item">My blog</li>
-            <li class="header__nav-item">Sign in</li>
-            <li class="header__nav-item">Register</li>
+            <li class="header__nav-item"><a class="header__nav-link" href="/pages/blog/index.html">My blog</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">Sign in</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">Register</a></li>
           </ul>
         </li>
       </ul>
     </nav>
   </header>
-</div>  
+</div>
+<!-- @@include('login/index.html') -->
+@@include('sign/index.html')
