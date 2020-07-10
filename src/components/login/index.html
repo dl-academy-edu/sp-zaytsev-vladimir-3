@@ -1,28 +1,29 @@
-<div class="popup popup_none login_js">
-  <form class="form-login" name="log-in">
+<div class="login-popup login-popup_none">
+  <form class="form-login" name="login">
     <ul class="form-login__list list-hidden-marker">
       <li class="form-login__item">
-        <label class="form-login__label" for="input-email">Email <span class="form-login__label_red">*</span></label>
+        <label class="form-login__label" for="login-input-email">Email <span class="form-login__label_red">*</span></label>
         @@include('input/index.html', {
           "type":"email",
           "name":"email",
-          "id":"input-email"
-        })</li>
+          "id":"login-input-email"
+        })
+      </li>
       <li class="form-login__item">  
-        <label class="form-login__label" for="input-password">Password <span class="form-login__label_red">*</span></label>
+        <label class="form-login__label" for="login-input-password">Password <span class="form-login__label_red">*</span></label>
         @@include('input/index.html', {
-          "type":"Password",
-          "name":"Password",
-          "id":"input-password"
+          "type":"password",
+          "name":"password",
+          "id":"login-input-password"
         })
       </li>
     </ul>  
     @@include('button/index.html', {
       "class":"button_white",
       "text":"Log in",
-      "type:"submit"
+      "type":"submit"
     })
-    <button class="form-sign__button-close form-sign__button-close_js" type="button"><span class="hidden">close window</span></button> 
+    <button class="form-login__button-close form-login__button-close_js" type="button"><span class="hidden">close window</span></button> 
   </form>
 </div>
 

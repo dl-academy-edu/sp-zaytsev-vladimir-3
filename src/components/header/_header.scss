@@ -19,8 +19,10 @@
   &__nav-link {
     color: #828282;
     font-weight: bold;
+    border: none;
+    background-color: transparent;
 
-    &:hover, focus {
+    &:hover, &:focus {
       color:#070707;
       cursor: pointer;
     }

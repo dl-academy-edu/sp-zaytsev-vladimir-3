@@ -62,24 +62,19 @@
     border-radius: 50%;
     outline: none;
     cursor: pointer;
-    transition: background-color .4s;
+    transition: background-color .4s;    
+    
+    &:not(.slider__dot_active):hover,
+    &:not(.slider__dot_active):focus {
+      background-color: #828282;
+    }
 
     &:not(:last-child) {
       margin-right: 5px;
     }
-    
-    &:hover, focus {
-      background-color: #828282;
-      cursor:pointer;
-    }
 
     &_active {
       background-color: #070707;
-    }
-
-    &:not(.slider__dot_active):hover,
-    &:not(.slider__dot_active):focus {
-      background-color: #E5E5E5;
     }
   }
 }
@@ -116,7 +111,7 @@
 
     &:nth-child(odd) {
       margin-left: -100px;
-      &:before {
+      &::before {
         content: "";
         border-bottom: #070707 2.5px solid;
         border-right: #070707 2.5px solid;
@@ -132,7 +127,7 @@
 
     &:nth-child(even) {
       margin-right: -100px;
-      &:before {
+      &::before {
         content: "";
         border-bottom: #070707 2.5px solid;
         border-right: #070707 2.5px solid;

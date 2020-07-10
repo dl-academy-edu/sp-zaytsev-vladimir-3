@@ -1,25 +1,19 @@
-.popup {
-  background-color: rgba(246, 246, 246, 0.99);
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  z-index: 1;
-
-  // &_none {
-  //   display: none;
-  // }
-}
-
 .form-sign {
   max-width: 680px;
   margin: auto;
   position: relative;
   box-sizing: border-box;
-  padding: 40px 40px;
+  padding: 40px;
   border: 2.5px solid #070707;
+
+  @media (max-width: 767px) {
+    max-width: 320px;
+    padding: 20px;
+  }
+
+  @media (max-width: 400px) {
+    border: none;
+  }
 
   &__button-close {
     border: none;
@@ -50,6 +44,9 @@
     margin-bottom: 20px;
     &:nth-child(odd) {
       margin-right: 10px;
+      @media (max-width: 767px) {
+        margin-right: 0;
+      }      
     }
   }
 
@@ -111,5 +108,20 @@
     height: 20px;
     background-image: url(/static/images/check.svg);
     background-repeat: no-repeat;
+  }
+}
+
+.sign-popup {
+  background-color: rgba(246, 246, 246, 0.99);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  z-index: 1;
+
+  &_none {
+    display: none;
   }
 }
