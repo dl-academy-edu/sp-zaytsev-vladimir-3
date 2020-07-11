@@ -4,6 +4,16 @@
   margin: auto;
   position: relative;
 
+
+  @media (max-width: 767px) {
+    max-width: 320px;
+    padding: 20px;
+  }
+
+  @media (max-width: 400px) {
+    border: none;
+  }
+
   &__button-close {
     border: none;
     width: 25.5px;
@@ -18,6 +28,12 @@
 
     &:hover, &:focus {
       opacity: 0.9;
+    }
+    
+
+    @media (max-width: 400px) {
+      top: -25px;
+      left: 25px;
     }
   }
 
@@ -41,6 +57,7 @@
     margin-bottom: 10px;
     font-size: 14px;
     line-height: 16px;
+    font-weight: 500;
 
     &_red {
       color: #ff0000;

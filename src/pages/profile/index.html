@@ -1,8 +1,8 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="/static/fonts/gilroy.css" />
     <link href="/common.css" rel="stylesheet">
@@ -40,14 +40,14 @@
           <ul class="profile-info__buttons-list list-hidden-marker">
             <li class="profile-info__button-item">
               @@include('button/index.html', {
-                "class":"button_white",
+                "class":"button_white button-change-password_js",
                 "text":"Change password",
                 "type":"button"
               })
             </li>
             <li class="profile-info__button-item">
               @@include('button/index.html', {
-                "class":"button_white",
+                "class":"button_white button-change-data_js",
                 "text":"Change other data",
                 "type":"button"
               })
@@ -63,5 +63,101 @@
         </div>          
       </section>
     </main>
+    <div class="change-password-popup change-password-popup_none">
+      <form class="form-change-password" name="change-password">
+        <ul class="form-change-password__list list-hidden-marker">
+          <li class="form-change-password__item">
+            <label class="form-change-password__label" for="change-password-old">Old password <span class="form-change-password__label_red">*</span></label>
+            @@include('input/index.html', {
+              "type":"password",
+              "name":"oldPassword",
+              "id":"change-password-old"
+            })
+          </li>
+          <li class="form-change-password__item">  
+            <label class="form-change-password__label" for="change-password-new">New password <span class="form-change-password__label_red">*</span></label>
+            @@include('input/index.html', {
+              "type":"password",
+              "name":"newPassword",
+              "id":"change-password-new"
+            })
+          </li>
+          <li class="form-change-password__item">  
+            <label class="form-change-password__label" for="change-password-repeat">Repeat new password <span class="form-change-password__label_red">*</span></label>
+            @@include('input/index.html', {
+              "type":"password",
+              "name":"repeatPassword",
+              "id":"change-password-repeat"
+            })
+          </li>
+        </ul>  
+        @@include('button/index.html', {
+          "class":"button_white",
+          "text":"Change password",
+          "type":"submit"
+        })
+        <button class="form-change-password__button-close form-change-password__button-close_js" type="button"><span class="hidden">close window</span></button> 
+      </form>
+    </div>
+    <div class="change-data-popup change-data-popup_none">
+      <form class="form-change-data" name="change-data">
+        <label class="form-change-data__label" for="change-input-email">Email</label>
+        @@include('input/index.html', {
+          "type":"email",
+          "name":"email",
+          "id":"change-input-email"
+        })
+        <ul class="form-change-data__list list-hidden-marker">
+          <li class="form-change-data__item">  
+            <label class="form-change-data__label" for="data-input-name">Name</label>
+            @@include('input/index.html', {
+              "type":"text",
+              "name":"name",
+              "id":"data-input-name"
+            })
+          </li>
+          <li class="form-change-data__item">  
+            <label class="form-change-data__label" for="data-input-surname">Surname</label>
+            @@include('input/index.html', {
+              "type":"text",
+              "name":"surname",
+              "id":"data-input-surname"
+            })
+          </li>
+          <li class="form-change-data__item">  
+            <label class="form-change-data__label" for="data-input-password">Location</label>
+            @@include('input/index.html', {
+              "type":"text",
+              "name":"location",
+              "id":"data-input-password"
+            })
+          </li>
+          <li class="form-change-data__item">  
+            <label class="form-change-data__label" for="data-input-repassword">Age</label>
+            @@include('input/index.html', {
+              "type":"number",
+              "name":"age",
+              "id":"data-input-repassword"
+            })
+          </li>
+          <li class="form-change-data__item">  
+            <label class="form-change-data__label" for="data-input-location">Profile picture</label>
+            @@include('input/index.html', {
+              "type":"file",
+              "name":"picture",
+              "id":"data-input-location"
+            })
+          </li>     
+        </ul>    
+        @@include('button/index.html', {
+          "class":"button_white",
+          "text":"Submit changes",
+          "type":"submit"
+        })
+        <button class="form-change-data__button-close form-change-data__button-close_js" type="button"><span class="hidden">close window</span></button>   
+      </form>
+    </div>
+    <script src="index.js"></script>
+    <!-- <script src="/static/images/index.js"></script>         -->
   </body>
 </html>

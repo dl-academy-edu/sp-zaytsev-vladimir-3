@@ -26,6 +26,10 @@
     margin: 5px;
   }
 
+  &__social-link {
+    display: inline-block;
+  }
+
   &__dl-info {
     font-size: 14px;
     line-height: 16px;
@@ -34,6 +38,7 @@
   }
 
   &__dl-name {
+    color: #828282;
     border-bottom: 1px dashed #828282;
     cursor: pointer;
     transition: .4s;

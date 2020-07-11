@@ -14,7 +14,7 @@
     cursor:pointer;
     transition: 0.4s;
 
-    &:hover, focus {
+    &:hover, &:focus {
       background-color: #FFFFFF;
       color: #070707;
     }
@@ -28,7 +28,7 @@
     
     transition: 0.4s;
 
-    &:hover, focus {
+    &:hover, &:focus {
       background-color: #070707;
       color: #FFFFFF;
     }    

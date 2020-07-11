@@ -5,7 +5,11 @@
 
 .form-filter {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+
+  &__wrapper {
+    display: flex;
+  }
 
   &__legend {
     font-weight: 500;
@@ -15,7 +19,6 @@
 
   &__options-list {
     width: 100%;
-    padding: 0;
     margin-right: 50px;
     display: flex;
     justify-content: space-between;
@@ -41,17 +44,25 @@
     margin-bottom: 5px;
   }
 
-  &__views-list, &__comments-list, 
-  &__show-list, &__sort-list {
-    padding: 0;
-  }
-
   &__views-item, &__comments-item, 
   &__show-item, &__sort-item {
     margin-top: 15px;
     display: flex;
     align-items: center;
-  }  
+    user-select: none;
+  }
+  
+  &__search-list {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+
+    &:nth-child(1) {
+      margin-right: 30px;
+      width: 100%;
+    }
+  }
+
 
   &__checkbox-label {
     position: relative;
@@ -204,23 +215,6 @@
     line-height: 16px;
     color: #E5E5E5;
   }
-}
-
-.form-search {
-
-  &__list {
-    margin: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;  
-  }
-  &__item {
-    &_input {
-      width: 100%;
-      margin-right: 30px;
-    }
-  }
-
 }
 
 .blog-posts {

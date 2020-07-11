@@ -1,8 +1,8 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="/static/fonts/gilroy.css" />
     <link href="/common.css" rel="stylesheet">
@@ -15,7 +15,8 @@
       <h1 class="container title blog-title">My blog</h1>
       <section class="container blog-forms">
         <form class="form-filter" name="form-filter">
-          <ul class="form-filter__options-list list-hidden-marker form-filter__options-list_js">
+          <div class="form-filter__wrapper">
+            <ul class="form-filter__options-list list-hidden-marker form-filter__options-list_js">
             <li class="form-filter__option-item">
               <fieldset class="form-filter__fieldset fieldset-border-none">
                 <legend class="form-filter__legend">Tags</legend>
@@ -79,15 +80,15 @@
                 <legend class="form-filter__legend">Comments</legend>
                 <ul class="form-filter__comments-list list-hidden-marker">
                   <li class="form-filter__comments-item">
-                    <input class="form-filter__comments-input opacity" name="filter-comments" type="checkbox" value="0" id="input-comments-0">
+                    <input class="form-filter__comments-input opacity" name="comments" type="checkbox" value="0" id="input-comments-0">
                     <label class="form-filter__comments-label form-filter__comments-label_gray" for="input-comments-0">0</label>
                   </li>
                   <li class="form-filter__comments-item">
-                    <input class="form-filter__comments-input opacity" name="filter-comments" type="checkbox" value="1" id="input-comments-1">
+                    <input class="form-filter__comments-input opacity" name="comments" type="checkbox" value="1" id="input-comments-1">
                     <label class="form-filter__comments-label form-filter__comments-label_gray" for="input-comments-1">0-1</label>
                   </li>
                   <li class="form-filter__comments-item">
-                    <input class="form-filter__comments-input opacity" name="filter-comments" type="checkbox" value="50" id="input-comments-50">
+                    <input class="form-filter__comments-input opacity" name="comments" type="checkbox" value="50" id="input-comments-50">
                     <label class="form-filter__comments-label form-filter__comments-label_gray" for="input-comments-50">1-50</label>
                   </li>
                 </ul>
@@ -127,36 +128,37 @@
                 </ul>
               </fieldset>
             </li>            
-          </ul>          
-          <ul class="form-filter__button-list list-hidden-marker">
-            <li class="form-filter__button-item">
-              <p class="form-filter__reset-button">reset form</p>
-            </li>
-            <li class="form-filter__button-item">
-              @@include('button/index.html', {
-                "text":"Reset",
-                "class":"button_white"
-              })
-            </li>
-          </ul>         
-        </form>
-        <form class="form-search" name="form-search">
-          <ul class="form-search__list list-hidden-marker">
-            <li class="form-search__item form-search__item_input">
+            </ul>          
+            <ul class="form-filter__button-list list-hidden-marker">
+              <li class="form-filter__button-item">
+                <p class="form-filter__reset-button">reset form</p>
+              </li>
+              <li class="form-filter__button-item">
+                @@include('button/index.html', {
+                  "text":"Reset",
+                  "class":"button_white"
+                })
+              </li>
+            </ul>
+          </div>
+          <div class="form-filter__wrapper">            
+            <ul class="form-filter__search-list list-hidden-marker">
+              <li class="form-filter__search-item ">
               @@include('input/index.html', {
-                "type":"Search",
-                "name":"input-search",
+                "type":"text",
+                "name":"name",
                 "id":"input-search"
               })
-            </li>
-            <li class="form-search__item">
+              </li>
+              <li class="form-filter__search-item">
               @@include('button/index.html', {
                 "text":"Search",
                 "class":"button_white",
                 "type":"submit"
               })
-            </li>
-          </ul>          
+              </li>
+            </ul> 
+          </div>       
         </form>
       </section>
       <section class="container blog-posts">

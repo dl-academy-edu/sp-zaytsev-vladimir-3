@@ -30,6 +30,16 @@
     &:hover, &:focus {
       opacity: 0.9;
     }
+    
+    @media (max-width: 1023px) {
+      top: -35px;
+      right: 0;
+    }
+
+    @media (max-width: 400px) {
+      top: -25px;
+      left: 25px;
+    }
   }
 
   &__list {
@@ -51,9 +61,11 @@
   }
 
   &__label {
+    display: inline-block;
     margin-bottom: 6px;
     font-size: 14px;
     line-height: 16px;
+    font-weight: 500;
 
     &_red {
       color: #ff0000;
