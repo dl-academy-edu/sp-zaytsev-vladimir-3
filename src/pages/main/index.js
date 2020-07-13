@@ -46,9 +46,6 @@
     if(index < 0 || index > numberSlides) {
       return;
     }
-    innerWrapper.style.transition = "margin-left .5s";
-    dots[activeSlide].classList.remove("slider__dot_active")
-    dots[index].classList.add("slider__dot_active");
     if (index === 0) {
       buttonBack.setAttribute("disabled", "disabled");
     }
@@ -61,8 +58,12 @@
     if(activeSlide - index < 0) {
       buttonBack.removeAttribute("disabled");
     }
+    innerWrapper.style.transition = "margin-left .5s";
     innerWrapper.style.marginLeft = "-" + shearWidth*index + "px";
+    dots[activeSlide].classList.remove("slider__dot_active")
     activeSlide = index;
+    localStorage.setItem("activeSlide", activeSlide);
+    dots[index].classList.add("slider__dot_active");
   }
 
   buttonBack.addEventListener("click", function (){
@@ -79,6 +80,10 @@
     initWidthSlides();
     setActiveSlide(activeSlide);
   });
+
+  if(localStorage.getItem("activeSlide")) {
+    setActiveSlide(+localStorage.getItem("activeSlide"));
+  }
 })();
 
 let mySwiper = new Swiper ('.swiper-container', {

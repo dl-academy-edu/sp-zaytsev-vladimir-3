@@ -7,8 +7,8 @@ function getValuesForm(form) {
   let body = {};
   const inputs = form.querySelectorAll("input");
   const textares = form.querySelectorAll("textarea");
-  let l = inputs.length;
-  for(let i = 0; i < l; i++) {
+  const length = inputs.length;
+  for(let i = 0; i < length; i++) {
     const input = inputs[i];
     //проверка типа input
     switch (input.type) {
@@ -88,8 +88,8 @@ function setInvalidTextarea (textarea) {
 function setFormErrors (form, errors) {
   const inputs = form.querySelectorAll("input");
   const textares = form.querySelectorAll("textarea");
-  let l = inputs.length;
-  for(let i = 0; i < l; i++) {
+  const length = inputs.length;
+  for(let i = 0; i < length; i++) {
     const input = inputs[i];
     switch (input.type) {
       case "radio":
