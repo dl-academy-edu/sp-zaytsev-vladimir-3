@@ -130,7 +130,9 @@
         </form>
       </section>
       <section class="container blog-posts">
-        <div class="blog-posts__result-card blog-posts__result-card_js"></div>
+        <div class="blog-posts__result-card blog-posts__result-card_js">
+
+        </div>
         <div class="blog-posts__bottom-panel">
           @@include('buttonarrow/index.html',{
             "class":"button-arrow_left"
@@ -147,7 +149,11 @@
         </div>
       </section>
     </main>
-    @@include('footer/index.html')
+    @@include('footer/index.html')    
+    @@include('buttonarrow/index.html', {
+      "class":"button-arrow_js button-arrow_top hidden"
+    })
     <script src="index.js"></script>
+    <script src="/static/images/index.js"></script>
   </body>
 </html>

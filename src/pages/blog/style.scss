@@ -353,10 +353,15 @@
   }
 
   &__link {
+    cursor: pointer;
     margin-top: 20px;
     font-weight: bold;
     font-size: 18px;
     line-height: 22px;
     border-bottom: 1px dashed #070707;
+
+    &:hover, &:focus {
+      border-bottom: 1px solid;
+    }
   }
 }

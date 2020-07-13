@@ -3,7 +3,7 @@ const SERVER_URL ="https://academy.directlinedev.com";
 (function () {
   let cardsBox = document.querySelector(".blog-posts__result-card_js");
   let tagsBox = document.querySelector(".form-filter__tags-list_js");
-  let limit =  2;
+  let limit =  5;
   let allValuesPage = getValuesFromUrl();
   const formFilter = document.forms["form-filter"];
 
@@ -67,7 +67,7 @@ const SERVER_URL ="https://academy.directlinedev.com";
     const page = allValuesPage.page ? +allValuesPage.page : 1;
     const offset = (page-1) * limit;
     let tags = JSON.stringify(allValuesPage.tags);
-    call("GET", `/api/posts?limit=${limit}&offset${offset}&tags=${tags}`, function (res) {
+    call("GET", `/api/posts?limit=${limit}&offset${offset}`, function (res) {
       let response = JSON.parse(res.response);
       if (response.success) {
         const cards = response.data;
@@ -80,150 +80,8 @@ const SERVER_URL ="https://academy.directlinedev.com";
       } else {
         alert("все плохо!");
       }
-    })
+    });
   }
-
-  getCards(allValuesPage);
-
-  call("GET", "/api/tags", function (res) {
-    let response = JSON.parse(res.response);
-    if (response.success) {
-      const tags = response.data;
-      for(let i = 0; i < tags.length; i++) {
-        let tagHtml = createTag(tags[i]);
-        tagsBox.insertAdjacentHTML("beforeend", tagHtml);
-      }
-    } else {
-      alert("все плохо!");
-    }
-  })  
-
-  function getValuesForm(form) {
-    //отдаем значения input
-    let body = {};
-    const inputs = form.querySelectorAll("input");
-    const textares = form.querySelectorAll("textarea");
-    const length = inputs.length;
-    for(let i = 0; i < length; i++) {
-      const input = inputs[i];
-      //проверка типа input
-      switch (input.type) {
-        case "radio":
-          if (input.checked) {
-            body[input.name] = input.value;
-          }
-          break;
-        case "checkbox":
-          if(!body[input.name]){
-            body[input.name] = [];
-          }
-          if(input.checked){
-            const inputL = body[input.name].length;
-            body[input.name][inputL] = input.value;          
-          }
-          break;
-        case "file":
-          body[input.name] = input.files;
-          break;
-        default:
-          body[input.name] = input.value;
-          break;
-      }
-    }
-  
-    for (let textarea of textares) {
-      body[textarea.name] = textarea.value;
-    }
-    return body;
-  }
-  
-  function setValuesForm(form, values) {
-    //отдаем значения input
-    const inputs = form.querySelectorAll("input");
-    const textares = form.querySelectorAll("textarea");
-    for(let i = 0; i < inputs.length; i++) {
-      let input = inputs[i];
-      //проверка типа input
-      switch (input.type) {
-        case "radio":
-          if(values[input.name] && values[input.name] === input.value) {
-            input.checked = true;
-          }
-          break;
-        case "checkbox":
-          if(values[input.name]) {
-            if(typeof values[input.name] === "object") {
-              for(let j=0; j < values[input.name].length; j++) {
-                if(values[input.name][j] === input.value) {
-                  input.checked = true;
-                }
-              }
-            }
-            else {
-              if(values[input.name] === input.value) {
-                input.checked = true;
-              }
-            }
-          }
-          break;
-        default:
-          input.value = values[input.name];
-          break;
-      }
-    }  
-    for (let textarea of textares) {
-      textarea.value = values[textarea.name];
-    }
-  }
-  
-  function getValuesFromUrl() {
-  
-    let params = {};
-    if(location.search) {
-      let paramsArray = location.search.substring(1).split("&");
-  
-      for(let i=0; i < paramsArray.length; i++) {
-        let split = paramsArray[i].split("=");
-        let name = split[0];
-        let value = split[1].replace(/%20/g, " ");
-        if(params[name]) {
-          if(typeof params[name] === "string") {
-            params[name] = [params[name], value];
-          } else {
-            params[name].push(value);
-          }
-        } else {
-          params[name] = value;
-        }
-      }
-    } 
-    return params;
-  }
-  
-  function setValuesToUrl(values) {  
-    let params = [];
-    let names = Object.keys(values);
-    for(let i = 0; i < names.length; i++) {
-      if((typeof values[names[i]]) === "string") {
-        params.push(names[i] +"=" +values[names[i]]);
-      } else {
-          for(let j = 0; j < values[names[i]].length; j++) {
-            params.push(names[i] + "=" + values[names[i]][j]);
-          }
-      }
-    }
-    window.history.replaceState({}, document.title, "?" + params.join("&"));
-  }
-  
-  setValuesForm(formFilter, getValuesFromUrl());
-  
-  formFilter.addEventListener ("submit", function(event) {
-    event.preventDefault();
-    let value = getValuesForm(event.target);
-    setValuesToUrl(value);    
-    allValuesPage = value;
-    getCards(allValuesPage);
-  })
 
   function createPagination (countPage, activePage) {
     let links = document.querySelector(".blog-posts__pagination");
@@ -247,4 +105,146 @@ const SERVER_URL ="https://academy.directlinedev.com";
     }
   }  
 
+  getCards(allValuesPage);
+
+  call("GET", "/api/tags", function (res) {
+    console.log(res.responce);
+    let response = JSON.parse(res.response);
+    if (response.success) {
+      const tags = response.data;
+      for(let i = 0; i < tags.length; i++) {
+        let tagHtml = createTag(tags[i]);
+        tagsBox.insertAdjacentHTML("beforeend", tagHtml);
+      }      
+      setValuesForm(formFilter, getValuesFromUrl());
+    } else {
+      alert("все плохо!");
+    }
+  }); 
+  
+  
+  formFilter.addEventListener ("submit", function(event) {
+    event.preventDefault();
+    let value = getValuesForm(event.target);
+    setValuesToUrl(value);    
+    allValuesPage = value;
+    getCards(allValuesPage);
+  })
+
 })();
+
+function getValuesForm(form) {
+  //отдаем значения input
+  let body = {};
+  const inputs = form.querySelectorAll("input");
+  const textares = form.querySelectorAll("textarea");
+  const length = inputs.length;
+  for(let i = 0; i < length; i++) {
+    const input = inputs[i];
+    //проверка типа input
+    switch (input.type) {
+      case "radio":
+        if (input.checked) {
+          body[input.name] = input.value;
+        }
+        break;
+      case "checkbox":
+        if(!body[input.name]){
+          body[input.name] = [];
+        }
+        if(input.checked){
+          const inputL = body[input.name].length;
+          body[input.name][inputL] = input.value;          
+        }
+        break;
+      case "file":
+        body[input.name] = input.files;
+        break;
+      default:
+        body[input.name] = input.value;
+        break;
+    }
+  }
+
+  for (let textarea of textares) {
+    body[textarea.name] = textarea.value;
+  }
+  return body;
+}
+
+function setValuesToUrl(values) {  
+  let params = [];
+  let names = Object.keys(values);
+  for(let i = 0; i < names.length; i++) {
+    if((typeof values[names[i]]) === "string") {
+      params.push(names[i] +"=" +values[names[i]]);
+    } else {
+        for(let j = 0; j < values[names[i]].length; j++) {
+          params.push(names[i] + "=" + values[names[i]][j]);
+        }
+    }
+  }
+  window.history.replaceState({}, document.title, "?" + params.join("&"));
+}
+
+function setValuesForm(form, values) {
+  //отдаем значения input
+  const inputs = form.querySelectorAll("input");
+  const textares = form.querySelectorAll("textarea");
+  for(let i = 0; i < inputs.length; i++) {
+    let input = inputs[i];
+    //проверка типа input
+    switch (input.type) {
+      case "radio":
+        if(values[input.name] && values[input.name] === input.value) {
+          input.checked = true;
+        }
+        break;
+      case "checkbox":
+        if(values[input.name]) {
+          if(typeof values[input.name] === "object") {
+            for(let j=0; j < values[input.name].length; j++) {
+              if(values[input.name][j] === input.value) {
+                input.checked = true;
+              }
+            }
+          }
+          else {
+            if(values[input.name] === input.value) {
+              input.checked = true;
+            }
+          }
+        }
+        break;
+      default:
+        input.value = values[input.name];
+        break;
+    }
+  }  
+  for (let textarea of textares) {
+    textarea.value = values[textarea.name];
+  }
+}
+
+function getValuesFromUrl() {
+
+  let params = {};
+  if(location.search) {
+    let paramsArray = location.search.substring(1).split("&");  
+    for(let i = 0; i < paramsArray.length; i++) {
+      let split = paramsArray[i].split("=");
+      let name = split[0];
+      let value = split[1].replace(/%20/g, " ");
+      if(params[name]) {
+        if(typeof params[name] === "string") {
+          params[name] = [params[name], value];
+        } else {
+          params[name].push(value);
+        }
+      } else {
+        params[name] = value;
+      }
+    }
+  } 
+  return params;
+}
