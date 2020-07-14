@@ -4,7 +4,6 @@
   background: transparent;
   border: 0;    
   cursor:pointer;
-  text-align: center;
   padding: 0;
 
   &:hover,&:focus {
@@ -25,7 +24,6 @@
   }
 
   &_left {
-    transform: initial;
   }
 
   &_right {

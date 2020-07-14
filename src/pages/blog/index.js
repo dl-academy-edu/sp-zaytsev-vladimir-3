@@ -7,6 +7,14 @@ const SERVER_URL ="https://academy.directlinedev.com";
   let allValuesPage = getValuesFromUrl();
   const formFilter = document.forms["form-filter"];
 
+
+  // (function getData(Date) {    
+  //   let date = new Date();
+  //   const year = date.getFullYear();
+  //   const month = date.getMonth();
+  //   const day = date.getDate();
+  // })();
+
   function call(method, path, fn, onerror) {
     let xhr = new XMLHttpRequest();
     xhr.open(method, SERVER_URL + path);
@@ -30,14 +38,15 @@ const SERVER_URL ="https://academy.directlinedev.com";
   }
 
   function createCard(card) {
-    return `<article class="card-block container">
+    return `<article class="card-block">
     <picture>
       <source srcset="${SERVER_URL}${card.mobilePhotoUrl}"
-        media="(max-width:767px)">
+        media="(max-width:767px)" alt="${card.title}">
       <source srcset="${SERVER_URL}${card.tabletPhotoUrl}"
-        media="(max-width:1023px)">
+        media="(max-width:1023px)" alt="${card.title}">
       <source srcset="${SERVER_URL}${card.desktopPhotoUrl}"
-        media="(min-width:1024px)">
+        media="(min-width:1024px)" alt="${card.title}">
+      <img class="card-block__image" src="${SERVER_URL}${card.photoUrl} alt="${card.title}">
     </picture>
     <div class="card-block__text-container">
       <ul class="card-block__tags-list list-hidden-marker">
@@ -66,7 +75,6 @@ const SERVER_URL ="https://academy.directlinedev.com";
   function getCards(allValuesPage) {
     const page = allValuesPage.page ? +allValuesPage.page : 1;
     const offset = (page-1) * limit;
-    let tags = JSON.stringify(allValuesPage.tags);
     call("GET", `/api/posts?limit=${limit}&offset${offset}`, function (res) {
       let response = JSON.parse(res.response);
       if (response.success) {
