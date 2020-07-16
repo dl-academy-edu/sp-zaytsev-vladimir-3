@@ -1,6 +1,9 @@
 let formMessage = document.forms["message"];
 let formLogin = document.forms["login"];
 let formSignUp = document.forms["sign-up"];
+let loaderBox = document.querySelector(".loader-container_js")
+
+
 
 let basePath = "https://academy.directlinedev.com";
 
@@ -66,7 +69,7 @@ function errorMessageInputCreate(input, text) {
   message.innerText = text;
 
   input.insertAdjacentElement("afterend", message);
-  input.addEventListener("input", function hendlerInput(event) {
+  input.addEventListener("input", function hendlerInput() {
     message.remove();
     input.removeEventListener("input", hendlerInput);
   })
@@ -207,6 +210,21 @@ function setFormErrors (form, errors) {
   });     
 }) ();
 
+function createLoader() {
+  return`
+    <div class="loader">
+    <div class="loader__wrapper">
+      <div class="loader__inner-wrapper">
+        <div class="loader__cube loader__cube_1"></div>
+        <div class="loader__cube loader__cube_2"></div>
+        <div class="loader__cube loader__cube_3"></div>
+        <div class="loader__cube loader__cube_4"></div>
+      </div>
+    </div>
+  </div>
+  `
+};
+
 
 (function openPopupMessage () {  
   let buttonOpenMessage = document.querySelector(".button-message_js");
@@ -300,44 +318,43 @@ function setFormErrors (form, errors) {
   });
 })();
 
+
 function sendReq({url, method="GET", body={}, headers={}}) {
-  const settings = {
-    method,
-    body,
-    headers,
-  };
-  settings.method = method;
-  settings.body = body;
-  settings.headers = headers;
-  console.log(settings);
+    const settings = {
+      method,
+      body,
+      headers,
+    };  
+    return fetch(basePath + url, settings);
+};  
 
-  return fetch(basePath + url, settings);
-};
-
-function register(event) {
-  event.preventDefault();
-  let values = getValuesForm(event.target);
-  console.log(values);
-  sendReq({
-    url: "/api/users",
-    method: "POST", 
-    body: JSON.stringify(values),
-    headers: {
-      "Content-Type": "aplication/json;charset=utf-8"
-    },
+(function register () {
+  formSignUp.addEventListener("submit", function (event) {
+    event.preventDefault();
+    loaderBox.innerHTML = createLoader();
+    let values = getValuesForm(event.target);
+    console.log(values);
+    sendReq({
+      url: "/api/users",
+      method: "POST", 
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "aplication/json;charset=utf-8"
+      },
+    })
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (json) {
+      if(json.success) {
+        let user = json.data;
+        alert(`asda ${user.name} ${user.surname}`)
+      } else {
+        throw {_message: json}
+      }
+    })
+    .catch(function(error) {
+      alert(`${JSON.stringify(error, null, 2)}`)
+    });
   })
-  .then(function (res) {
-    return res.json();
-  })
-  .then(function (json) {
-    if(json.success) {
-      let user = json.data;
-      alert(`asda ${user.name} ${user.surname}`)
-    } else {
-      throw {_message: json}
-    }
-  })
-  .catch(function(error) {
-    alert(`${JSON.stringify(error, null, 2)}`)
-  });
-};
+})();
