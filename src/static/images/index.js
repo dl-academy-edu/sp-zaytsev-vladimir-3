@@ -2,43 +2,7 @@ let formMessage = document.forms["message"];
 let formLogin = document.forms["login"];
 let formSignUp = document.forms["sign-up"];
 
-let SERVER_URL = "https://academy.directlinedev.com";
-
-function sendReg({url, method="GET", body={}, headers={}}) {
-  const settings = {
-    method,
-    body,
-    eaders,
-  };
-
-  return fetch(SERVER_URL + url, settings);
-}
-
-function register(e) {
-  e.preventDefault();
-  let values = getValuesForm(e.target);
-  console.log(values);
-  sendReg({
-    url: "/api/users",
-    method: "POST", 
-    body: JSON.stringify(values),
-    headers: {
-      "Content-Type": "aplication/json;charset=utf-8",
-    },
-  })
-  .then(function (res) {
-    return res.json();
-  });
-  // .then(function (json) {
-  //   if(json.success) {
-  //     let user = json.data;
-  //     alert(`asda ${user.name} ${user.surname}`)
-  //   } else {
-  //     throw {_message: JSON.stringify(json, null, 2)}
-  // //   }
-  // })
-}
-
+let basePath = "https://academy.directlinedev.com";
 
 
 function getValuesForm(form) {
@@ -335,3 +299,45 @@ function setFormErrors (form, errors) {
     }
   });
 })();
+
+function sendReq({url, method="GET", body={}, headers={}}) {
+  const settings = {
+    method,
+    body,
+    headers,
+  };
+  settings.method = method;
+  settings.body = body;
+  settings.headers = headers;
+  console.log(settings);
+
+  return fetch(basePath + url, settings);
+};
+
+function register(event) {
+  event.preventDefault();
+  let values = getValuesForm(event.target);
+  console.log(values);
+  sendReq({
+    url: "/api/users",
+    method: "POST", 
+    body: JSON.stringify(values),
+    headers: {
+      "Content-Type": "aplication/json;charset=utf-8"
+    },
+  })
+  .then(function (res) {
+    return res.json();
+  })
+  .then(function (json) {
+    if(json.success) {
+      let user = json.data;
+      alert(`asda ${user.name} ${user.surname}`)
+    } else {
+      throw {_message: json}
+    }
+  })
+  .catch(function(error) {
+    alert(`${JSON.stringify(error, null, 2)}`)
+  });
+};

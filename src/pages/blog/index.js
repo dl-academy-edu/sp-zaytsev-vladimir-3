@@ -7,14 +7,6 @@ const SERVER_URL ="https://academy.directlinedev.com";
   let allValuesPage = getValuesFromUrl();
   const formFilter = document.forms["form-filter"];
 
-
-  // (function getData(Date) {    
-  //   let date = new Date();
-  //   const year = date.getFullYear();
-  //   const month = date.getMonth();
-  //   const day = date.getDate();
-  // })();
-
   function call(method, path, fn, onerror) {
     let xhr = new XMLHttpRequest();
     xhr.open(method, SERVER_URL + path);
@@ -50,8 +42,10 @@ const SERVER_URL ="https://academy.directlinedev.com";
     </picture>
     <div class="card-block__text-container">
       <ul class="card-block__tags-list list-hidden-marker">
-        <li class="card-block__tag-item"></li>
-        <li class="card-block__tag-item"></li>
+        <li class="card-block__tag-item" style="color:${card.color}"></li>
+        <li class="card-block__tag-item" style="color:${card.color}"></li>
+        <li class="card-block__tag-item" style="color:${card.color}"></li>
+        <li class="card-block__tag-item" style="color:${card.color}"></li>
       </ul>
       <ul class="card-block__info-list list-hidden-marker">
         <li class="card-block__info-item">
@@ -70,12 +64,15 @@ const SERVER_URL ="https://academy.directlinedev.com";
     </div>
   </article>
   `
-  }
+  } 
+
+  getCards(allValuesPage);
 
   function getCards(allValuesPage) {
     const page = allValuesPage.page ? +allValuesPage.page : 1;
     const offset = (page-1) * limit;
-    call("GET", `/api/posts?limit=${limit}&offset${offset}`, function (res) {
+    let tags = JSON.stringify(allValuesPage.tags);
+    call("GET", `/api/posts?limit=${limit}&offset=${offset}`, function (res) {
       let response = JSON.parse(res.response);
       if (response.success) {
         const cards = response.data;
@@ -98,10 +95,10 @@ const SERVER_URL ="https://academy.directlinedev.com";
       let link = document.createElement("a");
       link.setAttribute("href", "?page="+(i+1));
       if(activePage === i+1) {
-        link.setAttribute("disabled", "disabled");
+        link.removeAttribute("href");
       }
       link.innerHTML = " " + (i+1);
-      links[i].addEventListener("click", function(event) {
+      link.addEventListener("click", function(event) {
         event.preventDefault();
         let value = getValuesForm(formFilter);
         value.page = i + 1 + "";
@@ -112,8 +109,6 @@ const SERVER_URL ="https://academy.directlinedev.com";
       links.insertAdjacentElement("beforeend", link);
     }
   }  
-
-  getCards(allValuesPage);
 
   call("GET", "/api/tags", function (res) {
     console.log(res.responce);

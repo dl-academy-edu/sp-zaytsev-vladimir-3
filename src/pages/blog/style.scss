@@ -326,7 +326,10 @@
   }
 
   &__tag-item {
-    margin-right: 5px;
+    margin-right: 5px;    
+    width: 30px;
+    height: 10px;
+    border-radius: 5px;
   }
 
   &__image {
