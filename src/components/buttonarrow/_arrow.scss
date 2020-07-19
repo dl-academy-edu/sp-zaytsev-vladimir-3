@@ -1,0 +1,33 @@
+.button-arrow {
+  width: 42px;
+  height: 42px; 
+  background: transparent;
+  border: 0;    
+  cursor:pointer;
+  padding: 0;
+
+  &:hover,&:focus {
+    opacity: .6;
+  }
+  
+  &:disabled {
+    cursor:url('static/images/cursor-disabled.png'), auto;
+    opacity: .1;
+  }
+
+  &_top{
+    transform: rotate(90deg);
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    z-index: 2;
+  }
+
+  &_left {
+  }
+
+  &_right {
+    
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,52 @@
+<div class="message-popup message-popup_none">
+  <form class="form-message" name="message">
+    <ul class="form-message__list list-hidden-marker">
+      <li class="form-message__item">  
+        <label class="form-message__label" for="message-input-name">What is your name? <span class="form-message__label_red">*</span></label>
+        @@include('input/index.html', {
+          "type":"text",
+          "name":"name",
+          "id":"message-input-name"
+        })
+      </li>
+      <li class="form-message__item">  
+        <label class="form-message__label" for="message-input-subject">Message subject <span class="form-message__label_red">*</span></label>
+        @@include('input/index.html', {
+          "type":"text",
+          "name":"subject",
+          "id":"message-input-subject"
+        })
+      </li>
+      <li class="form-message__item">  
+        <label class="form-message__label" for="message-input-email">Your Email <span class="form-message__label_red">*</span></label>
+        @@include('input/index.html', {
+          "type":"email",
+          "name":"email",
+          "id":"message-input-email"
+        })
+      </li>
+      <li class="form-message__item">  
+        <label class="form-message__label" for="message-input-phone">Your mobile phone <span class="form-message__label_red">*</span></label>
+        @@include('input/index.html', {
+          "type":"phone",
+          "name":"phone",
+          "id":"message-input-phone"
+        })
+      </li>
+    </ul>    
+    <div class="form-message__textarea-wrapper">      
+      <label class="form-message__textarea-label" for="message-textarea">What do you want to discuss with me?</label>
+      <textarea class="form-message__textarea-input " name="message" id="message-textarea" cols="30" rows="6"></textarea> 
+    </div>       
+    <div class="form-message__check-wrapper">
+      <input class="form-message__check-input opacity" type="checkbox" name="accept" value="accept" id="message-input-check">
+      <label class="form-message__check-label" for="message-input-check">Clicking on the button, you consent to the processing of your personal data.</label>
+    </div>        
+    @@include('button/index.html', {
+      "class":"button_white",
+      "text":"Send",
+      "type":"submit"
+    })
+    <button class="form-message__button-close form-message__button-close_js" type="button"><span class="hidden">close window</span></button>   
+  </form>
+</div>

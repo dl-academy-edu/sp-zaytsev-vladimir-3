@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/static/fonts/gilroy.css" />
+    <link href="/common.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>My blog</title>
+  </head>
+  <body>
+    @@include('header/index.html')
+    <main>
+      <h1 class="container title blog-title">My blog</h1>
+      <section class="container blog-forms">
+        <form class="form-filter" name="form-filter">
+          <div class="form-filter__wrapper">
+            <ul class="form-filter__options-list list-hidden-marker form-filter__options-list_js">
+              <li class="form-filter__option-item">
+                <fieldset class="form-filter__fieldset fieldset-border-none">
+                <legend class="form-filter__legend">Tags</legend>
+                <ul class="form-filter__tags-list form-filter__tags-list_js list-hidden-marker">
+                </ul>
+                </fieldset>
+              </li>            
+              <li class="form-filter__option-item">
+                <fieldset class="form-filter__fieldset fieldset-border-none">
+                <legend class="form-filter__legend">Views</legend>
+                <ul class="form-filter__views-list list-hidden-marker">
+                  <li class="form-filter__views-item">
+                    <input class="form-filter__radio-input opacity" name="views" type="radio" value="100-500" id="input-views-100">
+                    <label class="form-filter__radio-label" for="input-views-100">100-500</label>
+                  </li>
+                  <li class="form-filter__views-item">
+                    <input class="form-filter__radio-input opacity" name="views" type="radio" value="500-1000" id="input-views-500">
+                    <label class="form-filter__radio-label" for="input-views-500">500-1000</label>
+                  </li>
+                  <li class="form-filter__views-item">
+                    <input class="form-filter__radio-input opacity" name="views" type="radio" value="1000-2000" id="input-views-1000">
+                    <label class="form-filter__radio-label" for="input-views-1000">1000-2000</label>
+                  </li>
+                </ul>
+                </fieldset>
+              </li>            
+              <li class="form-filter__option-item">
+                <fieldset class="form-filter__fieldset fieldset-border-none">
+                <legend class="form-filter__legend">Comments</legend>
+                <ul class="form-filter__comments-list list-hidden-marker">
+                  <li class="form-filter__comments-item">
+                    <input class="form-filter__comments-input opacity" name="comments" type="checkbox" value="0" id="input-comments-0">
+                    <label class="form-filter__comments-label form-filter__comments-label_gray" for="input-comments-0">0</label>
+                  </li>
+                  <li class="form-filter__comments-item">
+                    <input class="form-filter__comments-input opacity" name="comments" type="checkbox" value="1" id="input-comments-1">
+                    <label class="form-filter__comments-label form-filter__comments-label_gray" for="input-comments-1">0-1</label>
+                  </li>
+                  <li class="form-filter__comments-item">
+                    <input class="form-filter__comments-input opacity" name="comments" type="checkbox" value="50" id="input-comments-50">
+                    <label class="form-filter__comments-label form-filter__comments-label_gray" for="input-comments-50">1-50</label>
+                  </li>
+                </ul>
+                </fieldset>
+              </li>           
+              <li class="form-filter__option-item">
+                <fieldset class="form-filter__fieldset fieldset-border-none">
+                <legend class="form-filter__legend">How show?</legend>
+                <ul class="form-filter__show-list list-hidden-marker">
+                  <li class="form-filter__show-item">
+                    <input class="form-filter__radio-input opacity" name="show" type="radio" value="5" id="input-show-5">
+                    <label class="form-filter__radio-label" for="input-show-5">show 5</label>
+                  </li>
+                  <li class="form-filter__show-item">
+                    <input class="form-filter__radio-input opacity" name="show" type="radio" value="10" id="input-show-10">
+                    <label class="form-filter__radio-label" for="input-show-10">show 10</label>
+                  </li>
+                </ul>
+                </fieldset>
+              </li>
+              <li class="form-filter__option-item">
+                <fieldset class="form-filter__fieldset fieldset-border-none">
+                <legend class="form-filter__legend">Sort by</legend>
+                <ul class="form-filter__sort-list list-hidden-marker">
+                  <li class="form-filter__sort-item">
+                    <input class="form-filter__radio-input opacity" name="sort" type="radio" value="date" id="input-sort-date">
+                    <label class="form-filter__radio-label" for="input-sort-date">date</label>
+                  </li>
+                  <li class="form-filter__sort-item">
+                    <input class="form-filter__radio-input opacity" name="sort" type="radio" value="title" id="input-sort-title">
+                    <label class="form-filter__radio-label" for="input-sort-title">title</label>
+                  </li>
+                  <li class="form-filter__sort-item">
+                    <input class="form-filter__radio-input opacity" name="sort" type="radio" value="views" id="input-sort-views">
+                    <label class="form-filter__radio-label" for="input-sort-views">views</label>
+                  </li>
+                </ul>
+                </fieldset>
+              </li>            
+            </ul>          
+            <ul class="form-filter__button-list list-hidden-marker">
+              <li class="form-filter__button-item">
+                <p class="form-filter__reset-button">reset form</p>
+              </li>
+              <li class="form-filter__button-item">
+                @@include('button/index.html', {
+                  "text":"Reset",
+                  "class":"button_white"
+                })
+              </li>
+            </ul>
+          </div>
+          <div class="form-filter__wrapper">            
+            <ul class="form-filter__search-list list-hidden-marker">
+              <li class="form-filter__search-item ">
+              @@include('input/index.html', {
+                "type":"text",
+                "name":"name",
+                "id":"input-search"
+              })
+              </li>
+              <li class="form-filter__search-item">
+              @@include('button/index.html', {
+                "text":"Search",
+                "class":"button_white",
+                "type":"submit"
+              })
+              </li>
+            </ul> 
+          </div>       
+        </form>
+      </section>
+      <section class="container blog-posts">
+        <div class="blog-posts__result-card blog-posts__result-card_js">
+
+        </div>
+        <div class="blog-posts__bottom-panel">
+          @@include('buttonarrow/index.html',{
+            "class":"button-arrow_left"
+          })
+          <div class="blog-posts__pagination">
+            <a class="blog-posts__page-link blog-posts__page-link_js" href="?page=1">1</a>
+            <a class="blog-posts__page-link blog-posts__page-link_js" href="?page=2">2</a>
+            <a class="blog-posts__page-link blog-posts__page-link_js" href="?page=3">3</a>
+            <a class="blog-posts__page-link blog-posts__page-link_js" href="?page=4">4</a>
+            <a class="blog-posts__page-link blog-posts__page-link_js" href="?page=4">4</a>
+            <a class="blog-posts__page-link blog-posts__page-link_js" href="?page=4">4</a>
+            <a class="blog-posts__page-link blog-posts__page-link_js" href="?page=4">4</a>
+            <a class="blog-posts__page-link blog-posts__page-link_js" href="?page=4">4</a>
+          </div>
+          @@include('buttonarrow/index.html', {
+            "class":"button-arrow_right"
+          })
+        </div>
+      </section>
+    </main>
+    @@include('footer/index.html')    
+    @@include('buttonarrow/index.html', {
+      "class":"button-arrow_js button-arrow_top hidden"
+    })
+    <div class="loader-container_js"></div>
+    <script src="index.js"></script>
+    <script src="/static/images/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+.header {
+  
+  padding: 33px 0 32px 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #828282;
+
+  &__nav-list {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -10px;
+  }
+
+  &__nav-item {
+    margin: 0 10px;
+  }
+
+  &__nav-link {
+    color: #828282;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+
+    &:hover, &:focus {
+      color:#070707;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+<div class="sign-popup sign-popup_js sign-popup_none">
+  <form class="form-sign" name="sign-up">
+    <label class="form-sign__label" for="sign-input-email">Email <span class="form-sign__label_red">*</span></label>
+    @@include('input/index.html', {
+      "type":"email",
+      "name":"email",
+      "id":"sign-input-email"
+    })
+    <ul class="form-sign__list list-hidden-marker">
+      <li class="form-sign__item">  
+        <label class="form-sign__label" for="sign-input-name">Name <span class="form-sign__label_red">*</span></label>
+        @@include('input/index.html', {
+          "type":"text",
+          "name":"name",
+          "id":"sign-input-name"
+        })
+      </li>
+      <li class="form-sign__item">  
+        <label class="form-sign__label" for="sign-input-surname">Surname <span class="form-sign__label_red">*</span></label>
+        @@include('input/index.html', {
+          "type":"text",
+          "name":"surname",
+          "id":"sign-input-surname"
+        })
+      </li>
+      <li class="form-sign__item">  
+        <label class="form-sign__label" for="sign-input-password">Password <span class="form-sign__label_red">*</span></label>
+        @@include('input/index.html', {
+          "type":"password",
+          "name":"password",
+          "id":"sign-input-password"
+        })
+      </li>
+      <li class="form-sign__item">  
+        <label class="form-sign__label" for="sign-input-repassword">Repeat password <span class="form-sign__label_red">*</span></label>
+        @@include('input/index.html', {
+          "type":"password",
+          "name":"repassword",
+          "id":"sign-input-repassword"
+        })
+      </li>
+      <li class="form-sign__item">  
+        <label class="form-sign__label" for="sign-input-location">Location <span class="form-sign__label_red">*</span></label>
+        @@include('input/index.html', {
+          "type":"text",
+          "name":"location",
+          "id":"sign-input-location"
+        })
+      </li>
+      <li class="form-sign__item">  
+        <label class="form-sign__label" for="sign-input-age">Age <span class="form-sign__label_red">*</span></label>
+        @@include('input/index.html', {
+          "type":"number",
+          "name":"age",
+          "id":"sign-input-age"
+        })
+      </li>      
+    </ul> 
+    <div class="form-sign__check-wrapper">
+      <input class="form-sign__check-input opacity" type="checkbox" name="accept" value="yes" id="input-check">
+      <label class="form-sign__check-label" for="input-check">Clicking on the button, you consent to the processing of your personal data.</label>
+    </div>     
+    @@include('button/index.html', {
+      "class":"button_white",
+      "text":"Sing in",
+      "type":"submit"
+    })
+    <button class="form-sign__button-close form-sign__button-close_js" type="button"><span class="hidden">close window</span></button>   
+  </form>
+</div>

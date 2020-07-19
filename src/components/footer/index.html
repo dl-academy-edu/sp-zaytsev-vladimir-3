@@ -1,0 +1,32 @@
+<footer class="footer">
+    <h2 class="footer__title">Contacts</h2>
+    <p class="footer__text">Want to know more or just chat?You are welcome!</p>
+    @@include('button/index.html', {
+      "text":"Send message",
+      "class":"button_black button-message_js",
+      "type":"button"
+    })
+    <ul class="footer__social-list list-hidden-marker">
+      <li class="footer__social-item">
+        <a class="footer__social-link button_white button" href="#">Instagram</a>
+      </li>
+      <li class="footer__social-item">
+        <a class="footer__social-link button_white button" href="#">Vk</a>
+      </li>
+      <li class="footer__social-item">
+        <a class="footer__social-link button_white button" href="#">Telegram</a>
+      </li>
+      <li class="footer__social-item">
+        <a class="footer__social-link button_white button" href="#">Mail</a>
+      </li>
+      <li class="footer__social-item">
+        <a class="footer__social-link button_white button" href="#">GitHub</a>
+      </li>
+      <li class="footer__social-item">
+        <a class="footer__social-link button_white button" href="#">Phone</a>
+      </li>
+    </ul>
+    <p class="footer__dl-info">Design by <a class="footer__dl-name" href="#">DL Academy</a></p>
+    <p class="footer__code-info">Program code from Antonina</p>
+</footer>
+@@include('message/index.html')

@@ -1,0 +1,25 @@
+.form-input {
+  padding: 14px 0 14px 14px;
+  border: 2.5px solid #E5E5E5;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  font-size: 18px;
+  line-height: 21px;
+  color: #070707;
+  cursor: pointer;
+  
+  &:hover {
+    border: 2.5px solid #828282;
+  }
+
+  &:focus {
+    border: 2.5px solid #070707;
+  }
+
+  &_notvalid {
+    border: 2.5px solid #EB3617;
+  }
+}
